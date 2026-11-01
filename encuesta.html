@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluación de un prototipo de aplicación móvil</title>
+  <style>
+    :root {
+      --primary: #673ab7;
+      --bg: #f0ebf8;
+      --card: #ffffff;
+      --text: #202124;
+      --muted: #5f6368;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px 12px;
+      background: var(--bg);
+      font-family: Roboto, Arial, sans-serif;
+      color: var(--text);
+    }
+
+    .wrap {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid #dadce0;
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin-bottom: 14px;
+    }
+
+    .header {
+      border-top: 10px solid var(--primary);
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: 28px;
+      font-weight: 400;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--primary);
+    }
+
+    .desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .q-title {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 14px;
+    }
+
+    .req {
+      color: #d93025;
+    }
+
+    label.opt {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 0;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    input[type="radio"] {
+      accent-color: var(--primary);
+      width: 18px;
+      height: 18px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #dadce0;
+      padding: 8px 2px;
+      font-size: 14px;
+      font-family: inherit;
+      background: transparent;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+      outline: none;
+      border-bottom: 2px solid var(--primary);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+
+    .otro-input {
+      margin-left: 28px;
+      width: calc(100% - 28px);
+    }
+
+    .scale {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .scale .end {
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 90px;
+      text-align: center;
+    }
+
+    .scale .nums {
+      display: flex;
+      gap: 14px;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .scale .n {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+    }
+
+    button {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 28px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    button:hover {
+      filter: brightness(1.1);
+    }
+
+    button:disabled {
+      opacity: .6;
+      cursor: default;
+    }
+
+    #gracias {
+      display: none;
+      text-align: center;
+    }
+
+    #error {
+      display: none;
+      color: #d93025;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="card header">
+      <h1>Encuesta: Evaluación de un prototipo de aplicación móvil</h1>
+      <div class="desc">El objetivo de esta encuesta es conocer la opinión de los usuarios sobre un prototipo de
+        aplicación móvil, evaluando su diseño, facilidad de uso, funcionalidades y utilidad. La información recopilada
+        será utilizada únicamente con fines académicos y las respuestas serán anónimas.</div>
+    </div>
+
+    <form id="form" action="https://formspree.io/f/xnppgdeg" method="POST">
+
+      <div class="card">
+        <h2>Sección 1. Información del participante</h2>
+      </div>
+
+      <div class="card">
+        <div class="q-title">1. ¿Qué edad tienes? <span class="req">*</span></div>
+        <label class="opt"><input type="radio" name="1. Edad" value="Menos de 18 años" required> Menos de 18
+          años</label>
+        <label class="opt"><input type="radio" name="1. Edad" value="18 a 24 años"> 18 a 24 años</label>
+        <label class="opt"><input type="radio" name="1. Edad" value="25 a 34 años"> 25 a 34 años</label>
+        <label class="opt"><input type="radio" name="1. Edad" value="35 a 44 años"> 35 a 44 años</label>
+        <label class="opt"><input type="radio" name="1. Edad" value="45 años o más"> 45 años o más</label>
+      </div>
+
+      <div class="card">
+        <div class="q-title">2. ¿Con qué género te identificas? <span class="req">*</span></div>
+        <label class="opt"><input type="radio" name="2. Género" value="Masculino" required> Masculino</label>
+        <label class="opt"><input type="radio" name="2. Género" value="Femenino"> Femenino</label>
+        <label class="opt"><input type="radio" name="2. Género" value="Prefiero no responder"> Prefiero no
+          responder</label>
+        <label class="opt"><input type="radio" name="2. Género" value="Otro"> Otro</label>
+        <input type="text" class="otro-input" name="2. Género (otro)" placeholder="Especifica (opcional)">
+      </div>
+
+      <div class="card">
+        <div class="q-title">3. ¿Cuál es tu ocupación actual? <span class="req">*</span></div>
+        <label class="opt"><input type="radio" name="3. Ocupación" value="Estudiante" required> Estudiante</label>
+        <label class="opt"><input type="radio" name="3. Ocupación" value="Profesional"> Profesional</label>
+        <label class="opt"><input type="radio" name="3. Ocupación" value="Trabajador independiente"> Trabajador
+          independiente</label>
+        <label class="opt"><input type="radio" name="3. Ocupación" value="Empleado"> Empleado</label>
+        <label class="opt"><input type="radio" name="3. Ocupación" value="Otro"> Otro</label>
+        <input type="text" class="otro-input" name="3. Ocupación (otro)" placeholder="Especifica (opcional)">
+      </div>
+
+      <div class="card">
+        <h2>Sección 2. Evaluación del prototipo</h2>
+      </div>
+
+      <div class="card">
+        <div class="q-title">4. ¿Qué tan fácil te resultó utilizar la aplicación móvil? <span class="req">*</span></div>
+        <div class="scale">
+          <div class="end">Muy difícil</div>
+          <div class="nums">
+            <label class="n">1<input type="radio" name="4. Facilidad de uso (1-5)" value="1" required></label>
+            <label class="n">2<input type="radio" name="4. Facilidad de uso (1-5)" value="2"></label>
+            <label class="n">3<input type="radio" name="4. Facilidad de uso (1-5)" value="3"></label>
+            <label class="n">4<input type="radio" name="4. Facilidad de uso (1-5)" value="4"></label>
+            <label class="n">5<input type="radio" name="4. Facilidad de uso (1-5)" value="5"></label>
+          </div>
+          <div class="end">Muy fácil</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="q-title">5. ¿Cómo calificarías el diseño y la apariencia visual de la aplicación? <span
+            class="req">*</span></div>
+        <label class="opt"><input type="radio" name="5. Diseño y apariencia" value="Excelente" required>
+          Excelente</label>
+        <label class="opt"><input type="radio" name="5. Diseño y apariencia" value="Bueno"> Bueno</label>
+        <label class="opt"><input type="radio" name="5. Diseño y apariencia" value="Regular"> Regular</label>
+        <label class="opt"><input type="radio" name="5. Diseño y apariencia" value="Malo"> Malo</label>
+        <label class="opt"><input type="radio" name="5. Diseño y apariencia" value="Muy malo"> Muy malo</label>
+      </div>
+
+      <div class="card">
+        <div class="q-title">6. ¿Consideras que las funcionalidades de la aplicación son útiles para resolver la
+          necesidad o problema que busca solucionar? <span class="req">*</span></div>
+        <label class="opt"><input type="radio" name="6. Utilidad de las funcionalidades" value="Totalmente de acuerdo"
+            required> Totalmente de acuerdo</label>
+        <label class="opt"><input type="radio" name="6. Utilidad de las funcionalidades" value="De acuerdo"> De
+          acuerdo</label>
+        <label class="opt"><input type="radio" name="6. Utilidad de las funcionalidades"
+            value="Ni de acuerdo ni en desacuerdo"> Ni de acuerdo ni en desacuerdo</label>
+        <label class="opt"><input type="radio" name="6. Utilidad de las funcionalidades" value="En desacuerdo"> En
+          desacuerdo</label>
+        <label class="opt"><input type="radio" name="6. Utilidad de las funcionalidades"
+            value="Totalmente en desacuerdo"> Totalmente en desacuerdo</label>
+      </div>
+
+      <div class="card">
+        <div class="q-title">7. ¿Qué característica de la aplicación te pareció más interesante o útil? <span
+            class="req">*</span></div>
+        <input type="text" name="7. Característica más interesante o útil" placeholder="Tu respuesta" required>
+      </div>
+
+      <div class="card">
+        <div class="q-title">8. ¿Encontraste alguna dificultad o problema al utilizar la aplicación? <span
+            class="req">*</span></div>
+        <label class="opt"><input type="radio" name="8. Dificultades" value="No, ninguna dificultad" required> No,
+          ninguna dificultad</label>
+        <label class="opt"><input type="radio" name="8. Dificultades" value="Sí, tuve problemas de navegación"> Sí, tuve
+          problemas de navegación</label>
+        <label class="opt"><input type="radio" name="8. Dificultades" value="Sí, algunas funciones no fueron claras">
+          Sí, algunas funciones no fueron claras</label>
+        <label class="opt"><input type="radio" name="8. Dificultades" value="Sí, tuve problemas de rendimiento"> Sí,
+          tuve problemas de rendimiento</label>
+        <label class="opt"><input type="radio" name="8. Dificultades" value="Otro"> Otro</label>
+        <input type="text" class="otro-input" name="8. Dificultades (otro)" placeholder="Especifica (opcional)">
+      </div>
+
+      <div class="card">
+        <div class="q-title">9. ¿Qué tan probable sería que utilizaras esta aplicación si estuviera disponible? <span
+            class="req">*</span></div>
+        <div class="scale">
+          <div class="end">Nada probable</div>
+          <div class="nums">
+            <label class="n">1<input type="radio" name="9. Probabilidad de uso (1-5)" value="1" required></label>
+            <label class="n">2<input type="radio" name="9. Probabilidad de uso (1-5)" value="2"></label>
+            <label class="n">3<input type="radio" name="9. Probabilidad de uso (1-5)" value="3"></label>
+            <label class="n">4<input type="radio" name="9. Probabilidad de uso (1-5)" value="4"></label>
+            <label class="n">5<input type="radio" name="9. Probabilidad de uso (1-5)" value="5"></label>
+          </div>
+          <div class="end">Muy probable</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="q-title">10. ¿Qué mejorarías o agregarías a la aplicación móvil? <span class="req">*</span></div>
+        <textarea name="10. Mejoras o adiciones" placeholder="Tu respuesta" required></textarea>
+      </div>
+
+      <div class="card" style="border:none;background:transparent;padding:0 0 24px;">
+        <button type="submit" id="btn">Enviar</button>
+        <div id="error">No se pudo enviar. Revisa tu conexión o el ID de Formspree e inténtalo de nuevo.</div>
+      </div>
+    </form>
+
+    <div class="card" id="gracias">
+      <h2>¡Gracias por tu respuesta!</h2>
+      <p class="desc">Tu respuesta ha sido registrada.</p>
+    </div>
+
+  </div>
+
+  <script>
+    const form = document.getElementById('form');
+    const btn = document.getElementById('btn');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      btn.disabled = true;
+      document.getElementById('error').style.display = 'none';
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          document.getElementById('gracias').style.display = 'block';
+          window.scrollTo(0, 0);
+        } else {
+          throw new Error();
+        }
+      } catch (err) {
+        document.getElementById('error').style.display = 'block';
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+
+</html>
