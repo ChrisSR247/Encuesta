@@ -12,7 +12,6 @@
       --primary-dark: #047857;
       --primary-light: #ecfdf5;
       --primary-border: #a7f3d0;
-      --accent: #2563eb;
       --bg: #f3f4f6;
       --card: #ffffff;
       --text: #1f2937;
@@ -295,26 +294,6 @@
       cursor: not-allowed;
     }
 
-    .btn-secondary {
-      background: #ffffff;
-      color: var(--text);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 8px 16px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s;
-    }
-
-    .btn-secondary:hover {
-      background: #f9fafb;
-      border-color: #d1d5db;
-    }
-
     #error-box {
       display: none;
       background: #fef2f2;
@@ -362,8 +341,7 @@
     /* Estilos de Impresión */
     @media print {
       .top-nav,
-      .btn-submit,
-      .btn-secondary {
+      .btn-submit {
         display: none !important;
       }
 
@@ -559,11 +537,9 @@
       <!-- Mensaje de Agradecimiento -->
       <div class="card" id="gracias">
         <h2>🎉 ¡Muchas gracias por tu participación!</h2>
-          <p>Tu opinión aportará a la investigación sobre servicios de entrega sostenible en Loja.</p>
-    </main>
-
-
-  </div>
+        <p>Tu opinión aportará a la investigación sobre servicios de entrega sostenible en Loja.</p>
+      </div>
+  </main>
 
   <script>
     // Validación de la Pregunta 2: Máximo 2 opciones
